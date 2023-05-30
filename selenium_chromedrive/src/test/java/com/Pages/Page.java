@@ -17,9 +17,17 @@ public class Page extends BasePage {
     protected static final String inputPasswordXpath = "//*[@id=\"password\"]" ; //xpath
     protected static final String inputConfirmPasswordXpath = "//*[@id=\"confirmPassword\"]"; //xpath
     protected static final String inputPhoneXpath = "//*[@id=\"phone\"]"; //xpath
-    protected static final String btnCreateAccountFormXpath = "/html/body/div[1]/form/div/div[4]/button"; //xpath
-    protected static final String btnContinuarXpath = "/html/body/div[1]/form/div/div/input"; //xpath
+    protected static final String btnCreateAccountFormXpath= "/html/body/div[1]/form/div/div[4]/button"; //xpath
 
+    /* tela de cadastro realizado*/
+    protected static final String successMsgXpath = "/html/body/div[1]/form/div/h2"; //xpath
+    protected static final String btnContinueCss = "body > div.css-fsxuga > form > div > button"; //css
+
+    protected static final String inputPasswordCss = "#password"; //css
+
+    protected static final String btnContinuePasswordxpath = "/html/body/div[1]/form/div/div[4]/button"; //css
+
+    protected static final String btnContinuarXpath = "/html/body/div[1]/form/div/div/input"; //xpath
 
     public void signIn() {
         WebElement signInBtn = getWebElement(By.xpath(signInBtnXpath));
@@ -63,10 +71,33 @@ public class Page extends BasePage {
         WebElement formPhone = getWebElement(By.xpath(inputPhoneXpath));
         formPhone.clear();
         formPhone.sendKeys(phone);
-
-        WebElement formBrtCreate = getWebElement(By.xpath(btnCreateAccountFormXpath));
-        formBrtCreate.click();
     }
+
+    public void createRegisterBtn() {
+        WebElement formBtnCreate = getWebElement(By.xpath(btnCreateAccountFormXpath));
+        formBtnCreate.click();
+    }
+    public String checkText() {
+        WebElement successMessage = getWebElement(By.xpath(successMsgXpath));
+        return successMessage.getText();
+    }
+
+    public void continueBtn() {
+        WebElement btnContinue = getWebElement(By.cssSelector(btnContinueCss));
+        btnContinue.click();
+    }
+
+    public void loginPassword(String passwordLogin) {
+        WebElement inputPassword = getWebElement(By.cssSelector(inputPasswordCss));
+        inputPassword.clear();
+        inputPassword.sendKeys(passwordLogin);
+
+        WebElement btnContinueLogin = getWebElement(By.xpath(btnContinuePasswordxpath));
+        btnContinueLogin.click();
+    }
+
+
+
 
 
 

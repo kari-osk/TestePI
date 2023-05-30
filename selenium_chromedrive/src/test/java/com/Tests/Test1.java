@@ -18,12 +18,27 @@ public class Test1 {
     @Test
     @Tag("Regression")
     public void registerTest() throws InterruptedException {
+        page.signIn();
+        Thread.sleep(1000);
+
         page.register("teste01@hotmail.com");
         page.createAccount();
         Thread.sleep(1000);
-        page.registerForm("Nometeste", "Sobrenometeste", "11111111111","email@teste.com","123456","123456", "123456789" );
+        page.registerForm("Nometeste", "Sobrenometeste", "11111111111","email@teste.com","123456","123456", "1234567890" );
+        Thread.sleep(1000);
+        page.createRegisterBtn();
+        Thread.sleep(2000);
 
+        String checkSuccessMsg = page.checkText();
+        assertTrue(checkSuccessMsg.contains("Cadastro realizado"));
+        System.out.println("mensagem: " + checkSuccessMsg);
+        page.continueBtn();
+        Thread.sleep(2000);
+
+        page.register("teste01@hotmail.com");
+        page.loginPassword("123456");
     }
+
 
     @AfterEach
     public void tearDown() {
