@@ -21,23 +21,36 @@ public class Test1 {
         page.signIn();
         Thread.sleep(1000);
 
-        page.register("teste01@hotmail.com");
+        page.register("teste38@hotmail.com");
         page.createAccount();
         Thread.sleep(1000);
-        page.registerForm("Nometeste", "Sobrenometeste", "11111111111","email@teste.com","123456","123456", "1234567890" );
+        page.registerForm("Teste38", "teste38", "333344444444","teste38@hotmail.com","123456","123456", "12345678901" );
         Thread.sleep(1000);
+
         page.createRegisterBtn();
-        Thread.sleep(2000);
+        Thread.sleep(6000);
 
         String checkSuccessMsg = page.checkText();
         assertTrue(checkSuccessMsg.contains("Cadastro realizado"));
         System.out.println("mensagem: " + checkSuccessMsg);
-        page.continueBtn();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
-        page.register("teste01@hotmail.com");
+        page.continueBtn();
+        Thread.sleep(1000);
+
+        page.register("teste38@hotmail.com");
+        page.continueLoginBtn();
+        Thread.sleep(1000);
         page.loginPassword("123456");
+        page.loginBtn();
+        Thread.sleep(1000);
+
+        /*String checkTextDashboard = page.initialDashboard();
+        assertTrue(checkTextDashboard.contains("Atividade"));
+        System.out.println("mensagem: " + checkTextDashboard);
+        Thread.sleep(1000);*/
     }
+
 
 
     @AfterEach

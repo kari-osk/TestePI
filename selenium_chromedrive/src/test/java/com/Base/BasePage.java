@@ -14,27 +14,20 @@ public class BasePage {
 
     public BasePage() {
 
-            //Properties prop = new Properties();
-            // prop.load(new FileInputStream("C:/Users/karin/OneDrive/Documentos/GIT/TestePI/selenium_chromedrive/src/test/resources/chromedriver"));
-            //String chromeDriverPath = prop.getProperty("C:/Users/karin/OneDrive/Documentos/GIT/TestePI/selenium_chromedrive/src/test/resources/chromedriver");
-
-            //System.setProperties("webdriver.chrome.driver", "chromeDriverPath" );
-
             System.setProperty("webdriver.chrome.driver", "C:/Users/karin/OneDrive/Documentos/GIT/TestePI/selenium_chromedrive/src/test/resources/chromedriver/chromedriver.exe");
             System.setProperty("webdriver.chrome.whitelistedIps", "");
 
             final ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("--headless");
+//          chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--remote-allow-origins=*");
             this.driver = new ChromeDriver(chromeOptions);
             driver.get("https://digital-money-house-rho.vercel.app/");
-
 
         }
 
         public void openApp () {
             getDriver().get(URL);
-           getDriver().manage().window().maximize();
+            getDriver().manage().window().maximize();
         }
 
         public WebDriver getDriver () {
