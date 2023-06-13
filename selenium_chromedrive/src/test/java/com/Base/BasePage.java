@@ -10,7 +10,7 @@ public class BasePage {
 
         public static WebDriver driver;
         //protected static final String URL = "http://localhost:3000";
-        protected static final String URL = "https://digital-money-house-rho.vercel.app/";
+        protected static final String URL = "https://dh-money.vercel.app/";
 
     public BasePage() {
 
@@ -21,7 +21,8 @@ public class BasePage {
 //          chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--remote-allow-origins=*");
             this.driver = new ChromeDriver(chromeOptions);
-            driver.get("https://digital-money-house-rho.vercel.app/");
+            driver.get("https://dh-money.vercel.app/");
+            //driver.get("http://localhost:3000/");
 
         }
 

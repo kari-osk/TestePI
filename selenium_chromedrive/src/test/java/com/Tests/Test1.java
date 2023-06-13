@@ -21,10 +21,10 @@ public class Test1 {
         page.signIn();
         Thread.sleep(1000);
 
-        page.register("teste38@hotmail.com");
+        page.register("teste77@hotmail.com");
         page.createAccount();
         Thread.sleep(1000);
-        page.registerForm("Teste38", "teste38", "333344444444","teste38@hotmail.com","123456","123456", "12345678901" );
+        page.registerForm("Teste", "Teste", "33335657289","teste77@hotmail.com","123456","123456", "12345678901" );
         Thread.sleep(1000);
 
         page.createRegisterBtn();
@@ -38,24 +38,35 @@ public class Test1 {
         page.continueBtn();
         Thread.sleep(1000);
 
-        page.register("teste38@hotmail.com");
+        page.register("teste77@hotmail.com");
         page.continueLoginBtn();
         Thread.sleep(1000);
         page.loginPassword("123456");
         page.loginBtn();
+        Thread.sleep(10000);
+
+        page.loadValue();
         Thread.sleep(1000);
 
-        /*String checkTextDashboard = page.initialDashboard();
-        assertTrue(checkTextDashboard.contains("Atividade"));
-        System.out.println("mensagem: " + checkTextDashboard);
-        Thread.sleep(1000);*/
+        page.selectCard();
+
+        page.addNewCard();
+        Thread.sleep(1000);
+
+        page.cardForm("4545345453454552", "012026", "Teste Sobrenome", "124");
+        Thread.sleep(2000);
+
+        page.btnCardForm();
+        Thread.sleep(10000);
+
+
     }
 
 
 
-    @AfterEach
+    /*@AfterEach
     public void tearDown() {
         page.quitDriver();
-    }
+    }*/
 
 }

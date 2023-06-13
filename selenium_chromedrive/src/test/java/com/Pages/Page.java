@@ -21,21 +21,29 @@ public class Page extends BasePage {
     protected static final String inputConfirmPasswordXpath = "//*[@id=\"confirmPassword\"]"; //xpath
     protected static final String inputPhoneXpath = "//*[@id=\"phone\"]"; //xpath
     protected static final String btnCreateAccountFormXpath= "/html/body/div[1]/form/div/div[4]/button"; //xpath
-
     /* tela de cadastro realizado --------------------------*/
     protected static final String successMsgXpath = "body > div.css-fsxuga > form > div > h2"; //xpath
-
     protected static final String btnContinueXpath = "html/body/div[1]/form/div/button"; //xpath
-
     protected static final String inputPasswordCss = "#password"; //css
     protected static final String btnContinueLoginXpath = "/html/body/div[1]/form/div/button[1]"; //xpath
     protected static final String btnContinuePasswordxpath = "/html/body/div[1]/form/div/button"; //css
-
-    protected static final String initialDashXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[2]"; //xpath
+    protected static final String initialDashXpath = "/html/body/div[1]/div[1]/div/p"; //xpath
     protected static final String btnContinuarXpath = "/html/body/div[1]/form/div/div/input"; //xpath
+
+    protected static final String btnLoadValueXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/button[1]"; //xpath
+
+    protected static final String btnSelectCardXpath = "/html/body/div[1]/div[2]/div[2]/div/button[2]/div"; //xpath
+    protected static final String btnCartoesXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[6]"; //Xpath
+    protected static final String btnNewCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[2]/a/div/p"; //xpath
+    protected static final String inputCardNumberXpath = "//*[@id=\"number_id\"]"; //xpath
+    protected static final String inputCardDateXpath = "//*[@id=\"expiration_date\"]"; //xpath
+    protected static final String inputCardNameXpath = "//*[@id=\"first_last_name\"]"; //xpath
+    protected static final String inputCVCXpath = "//*[@id=\"cod\"]"; //xpath
+    protected static final String btnCardContinuarXpath = "/html/body/div[1]/div[2]/div[2]/div/div/form/button"; //xpath
 
     public void signIn() {
         WebElement signInBtn = getWebElement(By.xpath(signInBtnXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(40)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(signInBtnXpath)));
         signInBtn.click();
     }
     public void register(String email) {
@@ -63,7 +71,6 @@ public class Page extends BasePage {
         formCpf.clear();
         formCpf.click();
         formCpf.sendKeys(cpf);
-
 
         WebElement formEmail = getWebElement(By.xpath(inputFormEmailXpath));
         formEmail.clear();
@@ -114,19 +121,54 @@ public class Page extends BasePage {
         btnContinueLogin.click();
     }
 
-    public String initialDashboard() {
-        WebElement initialDashboard = getWebElement(By.xpath(initialDashXpath));
-        new WebDriverWait(getDriver(), Duration.ofSeconds(40)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(initialDashXpath)));
-        System.out.println(initialDashboard.getText());
-        return initialDashboard.getText();
-    }
-
 
     public void login() {
         WebElement loginInput = getWebElement(By.xpath(btnContinuarXpath));
         loginInput.click();
     }
 
+    public void loadValue() {
+        WebElement loadValueBtn = getWebElement(By.xpath(btnLoadValueXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnLoadValueXpath)));
+        loadValueBtn.click();
+    }
+    public void selectCard() {
+        WebElement selectCardBtn = getWebElement(By.xpath(btnSelectCardXpath));
+        selectCardBtn.click();
+    }
+
+    public void addNewCard() {
+        WebElement addCard = getWebElement(By.xpath(btnNewCardXpath));
+        addCard.click();
+    }
+
+    public void cardForm(String cardNumber, String cardDate, String FullName, String cvc) {
+        WebElement cardNumberInput = getWebElement(By.xpath(inputCardNumberXpath));
+        cardNumberInput.clear();
+        cardNumberInput.click();
+        cardNumberInput.sendKeys(cardNumber);
+
+        WebElement cardDateInput = getWebElement(By.xpath(inputCardDateXpath));
+        cardDateInput.clear();
+        cardDateInput.click();
+        cardDateInput.sendKeys(cardDate);
+
+        WebElement cardFullName = getWebElement(By.xpath(inputCardNameXpath));
+        cardFullName.clear();
+        cardFullName.click();
+        cardFullName.sendKeys(FullName);
+
+        WebElement cardCvc = getWebElement(By.xpath(inputCVCXpath));
+        cardCvc.clear();
+        cardCvc.click();
+        cardCvc.sendKeys(cvc);
+
+    }
+    public void btnCardForm() {
+        WebElement cardBtn = getWebElement(By.xpath(btnCardContinuarXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnCardContinuarXpath)));
+        cardBtn.click();
+    }
 
 
 
