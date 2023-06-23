@@ -19,7 +19,12 @@ public class BasePage {
 
             final ChromeOptions chromeOptions = new ChromeOptions();
 //          chromeOptions.addArguments("--headless");
+
+            chromeOptions.addArguments("--incognito=False");
+
             chromeOptions.addArguments("--remote-allow-origins=*");
+
+
             this.driver = new ChromeDriver(chromeOptions);
             driver.get("https://dh-money.vercel.app/");
             //driver.get("http://localhost:3000/");

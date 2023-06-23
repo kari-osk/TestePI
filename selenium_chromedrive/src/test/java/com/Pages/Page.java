@@ -22,17 +22,15 @@ public class Page extends BasePage {
     protected static final String inputPhoneXpath = "//*[@id=\"phone\"]"; //xpath
     protected static final String btnCreateAccountFormXpath= "/html/body/div[1]/form/div/div[4]/button"; //xpath
     /* tela de cadastro realizado --------------------------*/
-    protected static final String successMsgXpath = "body > div.css-fsxuga > form > div > h2"; //xpath
+    protected static final String successMsgXpath = "/html/body/div[1]/form/div/h2"; //xpath
     protected static final String btnContinueXpath = "html/body/div[1]/form/div/button"; //xpath
     protected static final String inputPasswordCss = "#password"; //css
     protected static final String btnContinueLoginXpath = "/html/body/div[1]/form/div/button[1]"; //xpath
     protected static final String btnContinuePasswordxpath = "/html/body/div[1]/form/div/button"; //css
     protected static final String initialDashXpath = "/html/body/div[1]/div[1]/div/p"; //xpath
     protected static final String btnContinuarXpath = "/html/body/div[1]/form/div/div/input"; //xpath
-
     protected static final String btnLoadValueXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/button[1]"; //xpath
-
-    protected static final String btnSelectCardXpath = "/html/body/div[1]/div[2]/div[2]/div/button[2]/div"; //xpath
+    protected static final String btnSelectCardXpath = "/html/body/div[1]/div[2]/div[2]/div/button[2]"; //xpath
     protected static final String btnCartoesXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[6]"; //Xpath
     protected static final String btnNewCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[2]/a/div/p"; //xpath
     protected static final String inputCardNumberXpath = "//*[@id=\"number_id\"]"; //xpath
@@ -40,6 +38,45 @@ public class Page extends BasePage {
     protected static final String inputCardNameXpath = "//*[@id=\"first_last_name\"]"; //xpath
     protected static final String inputCVCXpath = "//*[@id=\"cod\"]"; //xpath
     protected static final String btnCardContinuarXpath = "/html/body/div[1]/div[2]/div[2]/div/div/form/button"; //xpath
+
+    protected static final String btnVerAtividadeXpath = "/html/body/div[1]/div[2]/div[2]/div/div[4]/div/p"; //xpath
+    protected static final String btnProfileXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[3]"; //xpath
+    protected static final String btnEditNameXpath = "/html/body/div[1]/div[2]/div[2]/div/form/div/div[3]/div/div/div[2]"; //xpath
+
+    protected static final String inputEditNameXpath = "//*[@id='name']"; //xpath
+
+    protected static final String btnAdminPaymentXpath = "/html/body/div[1]/div[2]/div[2]/div/div/button"; //xpath
+
+    protected static final String btnPlusNewCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div[1]/a/div/p"; //xpath
+    protected static final String btnDeleteCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/div[1]/div/div/p"; //xpath
+    protected static final String btnConfirmDeleteCardXpath = "//*[@id='chakra-modal--body-:r13:']/footer/button[1]"; //xpath
+
+    protected static final String btnMenuLoadValueXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[4]"; //xpath
+
+    protected static final String radioBtnCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[1]/div/div/div/div/label/span"; //xpath
+
+    protected static final String btnContinueDepositXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[2]/button"; //xpath
+
+    protected static final String inputDepositValueXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/input"; //xpath
+
+    protected static final String btnContinueDepositValueXpath = "/html/body/div[1]/div[2]/div[2]/div/div/button"; //xpath
+
+    protected static final String btnConfirmDepositXpath = "/html/body/div[1]/div[2]/div[2]/div/form/button"; //xpath
+
+    protected static final String btnBackXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[3]/button[1]"; //xpath
+
+    protected static final String btnLogoutXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[7]"; //xpath
+
+    /*----- activity ------*/
+
+    protected static final String btnMenuActivityXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[2]"; //xpath
+    protected static final String btnFilterXpath = "/html/body/div[1]/div[2]/div[2]/div/div[1]/button"; //xpath
+    protected static final String radioBtnTodayXpath = "//*[@id=\"accordion-panel-:r22:\"]/div/div/label[1]/span[1]"; //xpath
+    protected static final String btnApplyXpath = "//*[@id=\"chakra-modal--body-:r1v:\"]/div/div/button[2]"; //xpath
+    protected static final String activityDataXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/a/div/div[1]/p"; //xpath
+    protected static final String activityDocXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[2]/button[2]"; //xpath
+    protected static final String btnBackToHomeXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[2]/button[1]"; //xpath
+
 
     public void signIn() {
         WebElement signInBtn = getWebElement(By.xpath(signInBtnXpath));
@@ -84,7 +121,6 @@ public class Page extends BasePage {
         formConfirmPassword.clear();
         formConfirmPassword.sendKeys(confirmPassword);
 
-
         WebElement formPhone = getWebElement(By.xpath(inputPhoneXpath));
         formPhone.clear();
         formPhone.click();
@@ -95,8 +131,8 @@ public class Page extends BasePage {
         formBtnCreate.click();
     }
     public String checkText() {
-        WebElement successMessage = getWebElement(By.cssSelector(successMsgXpath));
-        new WebDriverWait(getDriver(), Duration.ofSeconds(40)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(successMsgXpath)));
+        WebElement successMessage = getWebElement(By.xpath(successMsgXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(successMsgXpath)));
 
         System.out.println(successMessage.getText());
         return successMessage.getText();
@@ -121,15 +157,27 @@ public class Page extends BasePage {
         btnContinueLogin.click();
     }
 
-
     public void login() {
         WebElement loginInput = getWebElement(By.xpath(btnContinuarXpath));
         loginInput.click();
     }
 
+    public void allActivity() {
+        WebElement activityBtn = getWebElement(By.xpath(btnVerAtividadeXpath));
+        activityBtn.click();
+    }
+
+    public void adminPayment() {
+        WebElement paymentBtn = getWebElement(By.xpath(btnAdminPaymentXpath));
+        paymentBtn.click();
+
+        WebElement btnNewCard = getWebElement(By.xpath(btnPlusNewCardXpath));
+        btnNewCard.click();
+    }
+
     public void loadValue() {
         WebElement loadValueBtn = getWebElement(By.xpath(btnLoadValueXpath));
-        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnLoadValueXpath)));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(90)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnLoadValueXpath)));
         loadValueBtn.click();
     }
     public void selectCard() {
@@ -144,6 +192,7 @@ public class Page extends BasePage {
 
     public void cardForm(String cardNumber, String cardDate, String FullName, String cvc) {
         WebElement cardNumberInput = getWebElement(By.xpath(inputCardNumberXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(inputCardNumberXpath)));
         cardNumberInput.clear();
         cardNumberInput.click();
         cardNumberInput.sendKeys(cardNumber);
@@ -162,7 +211,6 @@ public class Page extends BasePage {
         cardCvc.clear();
         cardCvc.click();
         cardCvc.sendKeys(cvc);
-
     }
     public void btnCardForm() {
         WebElement cardBtn = getWebElement(By.xpath(btnCardContinuarXpath));
@@ -170,7 +218,93 @@ public class Page extends BasePage {
         cardBtn.click();
     }
 
+    public void deleteCard() {
+        WebElement btnDeleteCard = getWebElement(By.xpath(btnDeleteCardXpath));
+        btnDeleteCard.click();
 
+        WebElement btnConfirm = getWebElement(By.xpath(btnConfirmDeleteCardXpath));
+        btnConfirm.click();
+    }
+
+    public void profile() {
+        WebElement btnProfile = getWebElement(By.xpath(btnProfileXpath));
+        btnProfile.click();
+
+        /*WebElement editNameBtn = getWebElement(By.xpath(btnEditNameXpath));
+        editNameBtn.click();
+
+        WebElement alterName = getWebElement(By.xpath(inputEditNameXpath));
+        alterName.click();
+        alterName.clear();
+        alterName.sendKeys("Nome alterado");*/
+    }
+
+    public void menuLoadValue() throws InterruptedException {
+        WebElement menuLoadValue = getWebElement(By.xpath(btnMenuLoadValueXpath));
+        menuLoadValue.click();
+
+        Thread.sleep(1000);
+
+        WebElement selectSectionCardBtn = getWebElement(By.xpath(btnSelectCardXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnSelectCardXpath)));
+        selectSectionCardBtn.click();
+
+        WebElement selectCardBtn = getWebElement(By.xpath(radioBtnCardXpath));
+        selectCardBtn.click();
+
+        WebElement continueBtn = getWebElement(By.xpath(btnContinueDepositXpath));
+        continueBtn.click();
+
+        WebElement depositValue = getWebElement(By.xpath(inputDepositValueXpath));
+        depositValue.click();
+        depositValue.clear();
+        depositValue.sendKeys("850");
+
+        WebElement continueDeposit = getWebElement(By.xpath(btnContinueDepositValueXpath));
+        continueDeposit.click();
+
+        WebElement confirmDeposit = getWebElement(By.xpath(btnConfirmDepositXpath));
+        confirmDeposit.click();
+
+        Thread.sleep(2000);
+
+        WebElement backInitial = getWebElement(By.xpath(btnBackXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnBackXpath)));
+        backInitial.click();
+    }
+
+    public void menuActivity() {
+        WebElement btnMenuActivity = getWebElement(By.xpath(btnMenuActivityXpath));
+        btnMenuActivity.click();
+
+        WebElement btnFilter = getWebElement(By.xpath(btnFilterXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnFilterXpath)));
+        btnFilter.click();
+
+        WebElement btnTodayActivity = getWebElement(By.xpath(radioBtnTodayXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(radioBtnTodayXpath)));
+        btnTodayActivity.click();
+
+        WebElement btnApply = getWebElement(By.xpath(btnApplyXpath));
+        btnApply.click();
+
+        WebElement activityData = getWebElement(By.xpath(activityDataXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(activityDataXpath)));
+        activityData.click();
+
+        WebElement activityDoc = getWebElement(By.xpath(activityDocXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(activityDocXpath)));
+        activityDoc.click();
+
+        WebElement backToHome = getWebElement(By.xpath(btnBackToHomeXpath));
+        backToHome.click();
+
+    }
+
+    public void logout() {
+        WebElement logoutBtn = getWebElement(By.xpath(btnLogoutXpath));
+        logoutBtn.click();
+    }
 
 }
 

@@ -9,9 +9,11 @@
         <module name="selenium_chromedrive" />
         <module name="DigitalBooking" />
         <module name="Template" />
-        <module name="whatchdog" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="whatchdog" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
