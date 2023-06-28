@@ -2,6 +2,7 @@ package com.Pages;
 
 import com.Base.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,6 +11,7 @@ import java.time.Duration;
 
 public class Page extends BasePage {
 
+    /*----- create account------*/
     protected static final String signInBtnXpath = "/html/body/div[1]/div[1]/div/button[1]"; //xpath
     protected static final String inputEmailCss = "#login"; //cssSelector
     protected static final String btnCreateAccountXpath = "/html/body/div[1]/form/div/button[2]"; //xpath
@@ -21,12 +23,15 @@ public class Page extends BasePage {
     protected static final String inputConfirmPasswordXpath = "//*[@id=\"confirmPassword\"]"; //xpath
     protected static final String inputPhoneXpath = "//*[@id=\"phone\"]"; //xpath
     protected static final String btnCreateAccountFormXpath= "/html/body/div[1]/form/div/div[4]/button"; //xpath
-    /* tela de cadastro realizado --------------------------*/
+
+    /*----- login ------*/
     protected static final String successMsgXpath = "/html/body/div[1]/form/div/h2"; //xpath
     protected static final String btnContinueXpath = "html/body/div[1]/form/div/button"; //xpath
     protected static final String inputPasswordCss = "#password"; //css
     protected static final String btnContinueLoginXpath = "/html/body/div[1]/form/div/button[1]"; //xpath
     protected static final String btnContinuePasswordxpath = "/html/body/div[1]/form/div/button"; //css
+
+    /*----- dashboard ------*/
     protected static final String initialDashXpath = "/html/body/div[1]/div[1]/div/p"; //xpath
     protected static final String btnContinuarXpath = "/html/body/div[1]/form/div/div/input"; //xpath
     protected static final String btnLoadValueXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/button[1]"; //xpath
@@ -38,36 +43,25 @@ public class Page extends BasePage {
     protected static final String inputCardNameXpath = "//*[@id=\"first_last_name\"]"; //xpath
     protected static final String inputCVCXpath = "//*[@id=\"cod\"]"; //xpath
     protected static final String btnCardContinuarXpath = "/html/body/div[1]/div[2]/div[2]/div/div/form/button"; //xpath
-
     protected static final String btnVerAtividadeXpath = "/html/body/div[1]/div[2]/div[2]/div/div[4]/div/p"; //xpath
+
+    /*----- menu profile ------*/
     protected static final String btnProfileXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[3]"; //xpath
     protected static final String btnEditNameXpath = "/html/body/div[1]/div[2]/div[2]/div/form/div/div[3]/div/div/div[2]"; //xpath
-
     protected static final String inputEditNameXpath = "//*[@id='name']"; //xpath
 
     protected static final String btnAdminPaymentXpath = "/html/body/div[1]/div[2]/div[2]/div/div/button"; //xpath
-
     protected static final String btnPlusNewCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div[1]/a/div/p"; //xpath
-    protected static final String btnDeleteCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/div[1]/div/div/p"; //xpath
-    protected static final String btnConfirmDeleteCardXpath = "//*[@id='chakra-modal--body-:r13:']/footer/button[1]"; //xpath
-
     protected static final String btnMenuLoadValueXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[4]"; //xpath
-
     protected static final String radioBtnCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[1]/div/div/div/div/label/span"; //xpath
-
     protected static final String btnContinueDepositXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[2]/button"; //xpath
-
     protected static final String inputDepositValueXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/input"; //xpath
-
     protected static final String btnContinueDepositValueXpath = "/html/body/div[1]/div[2]/div[2]/div/div/button"; //xpath
-
     protected static final String btnConfirmDepositXpath = "/html/body/div[1]/div[2]/div[2]/div/form/button"; //xpath
-
     protected static final String btnBackXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[3]/button[1]"; //xpath
-
     protected static final String btnLogoutXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[7]"; //xpath
 
-    /*----- activity ------*/
+    /*----- menu activity ------*/
 
     protected static final String btnMenuActivityXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[2]"; //xpath
     protected static final String btnFilterXpath = "/html/body/div[1]/div[2]/div[2]/div/div[1]/button"; //xpath
@@ -76,6 +70,25 @@ public class Page extends BasePage {
     protected static final String activityDataXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/a/div/div[1]/p"; //xpath
     protected static final String activityDocXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[2]/button[2]"; //xpath
     protected static final String btnBackToHomeXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[2]/button[1]"; //xpath
+
+    /*----- menu pay ------*/
+
+    protected static final String btnMenuPayXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[5]"; //xpath
+    protected static final String inputPayXpath = "/html/body/div[1]/div[2]/div[2]/div/div[1]/div/input"; //xpath
+    protected static final String selectServiceXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/a"; //xpath
+    protected static final String btnPayContinueXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/button"; //xpath
+    protected static final String radioBtnPayCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div[2]/div[1]/div/div/div/label/span"; //xpath
+    protected static final String btnPayServiceXpath = "/html/body/div[1]/div[2]/div[2]/div/div/button"; //xpath
+    protected static final String btnPayDocXpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/div[3]/button[2]"; //xpath
+    protected static final String btnPayBackHomeXpath =  "/html/body/div[1]/div[2]/div[2]/div/div/div/div[3]/button[1]"; //xpath
+
+    /*----- menu card ------*/
+    protected static final String menuCardXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[6]"; //xpath
+    protected static final String btnDeleteCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/div/p"; //xpath
+    protected static final String btnConfirmDeleteCardXpath = "//*[@id=\"chakra-modal--body-:r2s:\"]/footer/button[1]"; //xpath
+
+
+
 
 
     public void signIn() {
@@ -273,7 +286,7 @@ public class Page extends BasePage {
         backInitial.click();
     }
 
-    public void menuActivity() {
+    public void menuActivity() throws InterruptedException {
         WebElement btnMenuActivity = getWebElement(By.xpath(btnMenuActivityXpath));
         btnMenuActivity.click();
 
@@ -292,12 +305,67 @@ public class Page extends BasePage {
         new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(activityDataXpath)));
         activityData.click();
 
+        Thread.sleep(1000);
+
         WebElement activityDoc = getWebElement(By.xpath(activityDocXpath));
         new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(activityDocXpath)));
         activityDoc.click();
 
+        Thread.sleep(1000);
+
         WebElement backToHome = getWebElement(By.xpath(btnBackToHomeXpath));
         backToHome.click();
+    }
+
+    public void menuPay() throws InterruptedException {
+        WebElement btnMenuPay = getWebElement(By.xpath(btnMenuPayXpath));
+        btnMenuPay.click();
+
+        Thread.sleep(1000);
+
+        WebElement inputPay = getWebElement(By.xpath(inputPayXpath));
+        inputPay.click();
+        inputPay.sendKeys("hbo");
+
+        WebElement selectService = getWebElement(By.xpath(selectServiceXpath));
+        selectService.click();
+
+        Thread.sleep(1000);
+
+        WebElement btnContinue = getWebElement(By.xpath(btnPayContinueXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnPayContinueXpath)));
+        btnContinue.click();
+
+        Thread.sleep(1000);
+
+        WebElement selectCard = getWebElement(By.xpath(radioBtnPayCardXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(radioBtnPayCardXpath)));
+        selectCard.click();
+
+        WebElement btnPay = getWebElement(By.xpath(btnPayServiceXpath));
+        btnPay.click();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,350)", "");
+
+        WebElement btnDocPay = getWebElement(By.xpath(btnPayDocXpath));
+        btnDocPay.click();
+
+        WebElement btnBackHome = getWebElement(By.xpath(btnPayBackHomeXpath));
+        btnBackHome.click();
+    }
+
+    public void menuCard() {
+        WebElement btnMenuCard = getWebElement(By.xpath(menuCardXpath));
+        btnMenuCard.click();
+
+        WebElement selectCard = getWebElement(By.xpath(btnDeleteCardXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnDeleteCardXpath)));
+        selectCard.click();
+
+        WebElement confirmDeletion = getWebElement(By.xpath(btnConfirmDeleteCardXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnConfirmDeleteCardXpath)));
+        confirmDeletion.click();
 
     }
 
