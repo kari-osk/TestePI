@@ -21,15 +21,14 @@ public class Test1 {
         page.signIn();
         Thread.sleep(1000);
 
-        page.register("teste139@hotmail.com");
+        page.register("teste162@hotmail.com");
         page.createAccount();
         Thread.sleep(1000);
-        page.registerForm("Teste", "Sobrenome", "35999999999","teste139@hotmail.com","123456","123456", "12345678901" );
+        page.registerForm("Teste", "Sobrenome", "29999999991","teste162@hotmail.com","123456","123456", "12345678901" );
         Thread.sleep(1000);
 
         page.createRegisterBtn();
         Thread.sleep(6000);
-
         String checkSuccessMsg = page.checkText();
         assertTrue(checkSuccessMsg.contains("Cadastro realizado"));
         System.out.println("mensagem: " + checkSuccessMsg);
@@ -38,7 +37,7 @@ public class Test1 {
         page.continueBtn();
         Thread.sleep(1000);
 
-        page.register("teste139@hotmail.com");
+        page.register("teste162@hotmail.com");
         page.continueLoginBtn();
         Thread.sleep(1000);
         page.loginPassword("123456");
@@ -69,7 +68,7 @@ public class Test1 {
         Thread.sleep(1000);
 
         page.menuPay();
-        Thread.sleep(1000);
+        Thread.sleep(500);
 
         page.menuCard();
         Thread.sleep(1000);
