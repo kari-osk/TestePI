@@ -80,7 +80,7 @@ public class Page extends BasePage {
     /*----- menu card ------*/
     protected static final String menuCardXpath = "/html/body/div[1]/div[2]/div[1]/div/div/a[6]";
     protected static final String btnDeleteCardXpath = "/html/body/div[1]/div[2]/div[2]/div/div[2]/div/p";
-    protected static final String btnConfirmDeleteCardXpath = "//*[@id=\"chakra-modal--body-:r2s:\"]/footer/button[1]";
+    protected static final String btnConfirmDeleteCardXpath = "#chakra-modal--body-\\:rn\\: > footer > button.chakra-button.css-prflx4";
 
 
 
@@ -91,6 +91,7 @@ public class Page extends BasePage {
     }
     public void register(String email) {
         WebElement emailInput = getWebElement(By.cssSelector(inputEmailCss));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(40)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputEmailCss)));
         emailInput.clear();
         emailInput.sendKeys(email);
     }
@@ -278,7 +279,7 @@ public class Page extends BasePage {
         btnFilter.click();
 
         WebElement btnTodayActivity = getWebElement(By.xpath(radioBtnTodayXpath));
-        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(radioBtnTodayXpath)));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(70)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(radioBtnTodayXpath)));
         btnTodayActivity.click();
 
         WebElement btnApply = getWebElement(By.xpath(btnApplyXpath));
@@ -338,16 +339,20 @@ public class Page extends BasePage {
         btnBackHome.click();
     }
 
-    public void menuCard() {
+    public void menuCard() throws InterruptedException {
         WebElement btnMenuCard = getWebElement(By.xpath(menuCardXpath));
         btnMenuCard.click();
+
+        Thread.sleep(1000);
 
         WebElement selectCard = getWebElement(By.xpath(btnDeleteCardXpath));
         new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnDeleteCardXpath)));
         selectCard.click();
 
-        WebElement confirmDeletion = getWebElement(By.xpath(btnConfirmDeleteCardXpath));
-        new WebDriverWait(getDriver(), Duration.ofSeconds(60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(btnConfirmDeleteCardXpath)));
+        Thread.sleep(1000);
+
+        WebElement confirmDeletion = getWebElement(By.cssSelector(btnConfirmDeleteCardXpath));
+        new WebDriverWait(getDriver(), Duration.ofSeconds(100)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(btnConfirmDeleteCardXpath)));
         confirmDeletion.click();
 
     }
